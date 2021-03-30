@@ -1,2 +1,2 @@
 # CoinBaseWeb
-Website with using bank API
+Currency converter
