@@ -1,2 +1,2 @@
 # CoinBaseWeb
-Site with bank API
+Website with using bank API
