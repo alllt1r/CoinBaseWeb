@@ -1,23 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Welcome to currency App</h1>
+    <div class="d-flex justify-content-center" style="padding-top: 10px;">
+    <div class="card" style="width: 30rem;">
+        <div class="card-header">
+            <h1 class="blockquote text-center" >Welcome to currency App</h1>
+        </div>
+        <div class="card-body">
+            <form action="" method="post">
+                {{ form.hidden_tag() }} <!-- защита от CSRF-атак -->
+                <div style="padding-bottom: 1rem" >
+                    <label for="currency_from">From Currency</label>
+                    <input class="form-control form-control-lg" type="text" placeholder="examle: BTC" aria-label=".form-control-lg example" name="currency_from" id="from">
+                </div>
 
-    <form action="" method="post">
-        {{ form.hidden_tag() }} <!-- защита от CSRF-атак -->
+                <div style="padding-bottom: 1rem">
+                    <label for="currency_to">To Currency</label>
+                    <input class="form-control form-control-lg" type="text" placeholder="examle: USD" aria-label=".form-control-lg example" name="currency_to" id="to">
+                </div>
 
-        <label for="currency_from">From Currency</label>
-        <input type="text" name="currency_from" id="from">
+                <div style="padding-bottom: 1rem">
+                    <label for="type" class="form-label">Type</label>
+                    <select name="type" class="form-select" id="validationCustom04" required>
+                        <option>Buy</option>
+                        <option>Sell</option>
+                    </select>
+                </div>
 
-        <label for="currency_to">To Currency</label>
-        <input type="text" name="currency_to" id="to">
-
-        <label for="type">Type</label>
-        <select name="type">
-          <option>Buy</option>
-          <option>Sell</option>
-        </select>
-
-        <button type="submit">Search</button>
-    </form>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
 {% endblock %}

@@ -5,7 +5,7 @@ import os  # работа с операционной системой (комп
 from forms import SearchForm
 
 
-@app.route('/', methods=['GET', 'POST'])  # главная страница - mysite.com/
+@app.route('/', methods=['GET', 'POST'])
 def main_page():
     form = SearchForm()
     # экземпляр формы. То есть создаю форму для пользователя,
@@ -28,4 +28,7 @@ def search_weather():
 
     url = f'https://api.coinbase.com/v2/prices/{from_currency}-{to_currency}/{type}'
     response = requests.get(url).json()
-    return response.get('data', {}).get('amount'), response.status_code
+    if 'errors' in response:
+        return response.get('errors', {})[-1].get('message')
+    if 'data' in response:
+        return response.get('data', {}).get('amount')
