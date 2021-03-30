@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome to currency App</h1>
+
+    <form action="" method="post">
+        {{ form.hidden_tag() }} <!-- защита от CSRF-атак -->
+
+        <label for="currency_from">From Currency</label>
+        <input type="text" name="currency_from" id="from">
+
+        <label for="currency_to">To Currency</label>
+        <input type="text" name="currency_to" id="to">
+
+        <label for="type">Type</label>
+        <select name="type">
+          <option>Buy</option>
+          <option>Sell</option>
+        </select>
+
+        <button type="submit">Search</button>
+    </form>
+{% endblock %}
